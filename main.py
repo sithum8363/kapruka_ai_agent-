@@ -281,7 +281,7 @@ async def call_selected_tool(name: str, args: dict):
 
 @app.get("/")
 async def root():
-    return {"status": "running", "message": "Kapruka AI Backend is live"}
+    return FileResponse("website-Copy.html")
 
 
 @app.get("/tools")
