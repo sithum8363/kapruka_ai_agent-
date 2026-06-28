@@ -282,7 +282,7 @@ async def call_selected_tool(name: str, args: dict):
 
 @app.get("/")
 async def root():
-    return FileResponse("website-Copy.html")
+    return FileResponse("website - Copy.html")
 
 
 @app.get("/tools")
