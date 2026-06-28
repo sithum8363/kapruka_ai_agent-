@@ -1,0 +1,15 @@
+User: can i look underpats
+User: can i look underpats
+Tool: kapruka_search_products
+Result: ## Kapruka search: "underpants"
+Showing 1 results (LKR)
+
+**1. Dragons Halloween**
+   ID: `BOOK002034` · LKR 2,090 · In stock (low) · ships internationally
+   [View product](https://www.kapruka.com/buyonline/dragons-halloween/kid/book002034)
+
+==================================================
+User: Checkout cart
+User: Checkout cart
+User: can i track my orders
+User: ORD-20260628-GUL8

@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kapruka AI Agent</title>
+    <meta charset="utf-8">
+
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            min-height: 100vh;
+        }
+
+        /* ========== LOGIN PAGE ========== */
+        #loginPage {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .login-box {
+            position: relative;
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.96);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .login-box h2 {
+            color: #2c0253;
+            margin-bottom: 10px;
+            font-size: 1.8rem;
+        }
+
+        .login-box p {
+            color: #6b7280;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        .login-box input {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 15px;
+            border: 1px solid #d1d5db;
+            border-radius: 10px;
+            font-size: 15px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .login-box input:focus {
+            border-color: #7c3aed;
+            box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+        }
+
+        .login-box button {
+            width: 100%;
+            padding: 14px;
+            background: #7c3aed;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .login-box button:hover {
+            background: #6d28d9;
+        }
+
+        .login-error {
+            color: #dc2626;
+            font-size: 13px;
+            margin-top: 10px;
+            display: none;
+        }
+
+        /* ========== MAIN APP ========== */
+        #mainApp {
+            display: none;
+        }
+
+        .logout-btn {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            padding: 8px 18px;
+            background: #ef4444;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            z-index: 1001;
+            transition: background 0.2s;
+        }
+
+        .logout-btn:hover {
+            background: #dc2626;
+        }
+
+        /* Animated Header */
+        .header {
+            width: 100%;
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #2c0253;
+        }
+
+        .header h2 {
+            color: #ffffff;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            z-index: 10;
+            position: relative;
+            letter-spacing: 1px;
+        }
+
+        /* Chat Container */
+        .chat-container {
+            max-width: 900px;
+            margin: -40px auto 40px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 20;
+        }
+
+        .chat-wrapper {
+            background: #8f8d8d;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            padding: 20px;
+        }
+
+        #chat {
+            height: 500px;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            overflow-y: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+            background: #fafafa;
+        }
+
+        .user {
+            color: #1e40af;
+            margin: 12px 0;
+            padding: 10px 14px;
+            background: #dbeafe;
+            border-radius: 12px 12px 2px 12px;
+            max-width: 80%;
+            margin-left: auto;
+            word-wrap: break-word;
+        }
+
+        .bot {
+            color: #166534;
+            margin: 12px 0;
+            padding: 10px 14px;
+            background: #dcfce7;
+            border-radius: 12px 12px 12px 2px;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+
+        .input-area {
+            display: flex;
+            gap: 10px;
+        }
+
+        input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid #d1d5db;
+            border-radius: 10px;
+            font-size: 15px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input:focus {
+            border-color: #7c3aed;
+            box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+        }
+
+        button {
+            padding: 12px 24px;
+            background: #7c3aed;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 600;
+            transition: background 0.2s, transform 0.1s;
+        }
+
+        button:hover {
+            background: #6d28d9;
+        }
+
+        button:active {
+            transform: scale(0.97);
+        }
+
+        /* Product & Order Cards */
+        .product-card,
+        .order-card {
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 16px;
+            margin: 12px 0;
+            background: #ffffff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            transition: box-shadow 0.2s;
+        }
+
+        .product-card:hover,
+        .order-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .product-card h3,
+        .order-card h3 {
+            margin-top: 0;
+            color: #1f2937;
+            font-size: 1.1rem;
+        }
+
+        .product-card p,
+        .order-card p {
+            color: #4b5563;
+            margin: 6px 0;
+            font-size: 14px;
+        }
+
+        .product-card a,
+        .order-card a {
+            display: inline-block;
+            padding: 8px 16px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-right: 10px;
+            margin-top: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+
+        .product-card a:hover,
+        .order-card a:hover {
+            background: #1d4ed8;
+        }
+
+        .product-card button,
+        .order-card button {
+            padding: 8px 16px;
+            background: #059669;
+            font-size: 14px;
+            margin-top: 8px;
+        }
+
+        .product-card button:hover,
+        .order-card button:hover {
+            background: #047857;
+        }
+
+        .order-card .muted {
+            color: #9ca3af;
+            font-size: 12px;
+        }
+
+        .order-card button:disabled {
+            cursor: not-allowed;
+            opacity: 0.5;
+            background: #9ca3af;
+        }
+
+        /* Cart Panel */
+        .cart-panel {
+            position: fixed;
+            right: 20px;
+            top: 120px;
+            width: 320px;
+            max-height: 500px;
+            overflow-y: auto;
+            background: rgb(88, 88, 88);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            z-index: 1000;
+        }
+
+        .cart-item {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+
+        .cart-item button {
+            background: red;
+            padding: 5px 10px;
+            margin-top: 5px;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            background: green;
+            margin-top: 15px;
+        }
+
+        /* Scrollbar styling */
+        #chat::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        #chat::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        #chat::-webkit-scrollbar-thumb {
+            background: #c4b5fd;
+            border-radius: 4px;
+        }
+
+        #chat::-webkit-scrollbar-thumb:hover {
+            background: #a78bfa;
+        }
+
+        /* Loading animation */
+        .typing-indicator {
+            display: flex;
+            gap: 4px;
+            padding: 12px 14px;
+            background: #dcfce7;
+            border-radius: 12px 12px 12px 2px;
+            max-width: 80px;
+            margin: 12px 0;
+        }
+
+        .typing-indicator span {
+            width: 8px;
+            height: 8px;
+            background: #166534;
+            border-radius: 50%;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+
+        .typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
+        .typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
+
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+
+        #micBtn {
+            background: #7c3aed;
+            transition: 0.3s;
+        }
+
+        #micBtn.listening {
+            background: #ef4444;
+            animation: pulse 5s infinite;
+        }
+
+        #micBtn.finished {
+            background: #16a34a;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+    </style>
+    <base target="_blank">
+</head>
+
+<body>
+
+    <!-- ========== LOGIN PAGE ========== -->
+    <div id="loginPage">
+        <div class="login-bg finisher-header"></div>
+        <div class="login-box">
+            <h2>Welcome Back</h2>
+            <p>Sign in to access Kapruka AI Assistant</p>
+            <input type="text" id="loginUser" placeholder="Username" />
+            <input type="password" id="loginPass" placeholder="Password" />
+            <button onclick="doLogin()">Sign In</button>
+            <div class="login-error" id="loginError"></div>
+        </div>
+    </div>
+
+    <!-- ========== MAIN APP ========== -->
+    <div id="mainApp">
+        <button class="logout-btn" onclick="doLogout()">Logout</button>
+
+        <div class="header" id="mainHeader" style="width: 100%; height: 300px;">
+            <h2>Kapruka AI Assistant</h2>
+        </div>
+
+        <div class="chat-container">
+            <div class="chat-wrapper">
+                <div id="chat"></div>
+
+                <div class="input-area">
+                    <input
+                        id="message"
+                        placeholder="Type message..."
+                        onkeypress="if(event.key==='Enter') sendMessage()"
+                    />
+                    <select id="voiceLang">
+                        <option value="si-LK">සිංහල</option>
+                        <option value="en-US">English</option>
+                    </select>
+                    <button id="micBtn" onclick="startVoice()">🎤</button>
+                    <button onclick="sendMessage()">Send</button>
+                </div>
+            </div>
+        </div>
+
+        <br><br>
+
+        <div class="chat-container">
+            <h2>🛒 Shopping Cart</h2>
+            <div id="cartItems">Cart is empty.</div>
+            <button class="checkout-btn" onclick="checkoutCart()">Checkout</button>
+        </div>
+    </div>
+
+    <!-- FinisherHeader Library -->
+    <script src="finisher-header.es5.min.js" type="text/javascript"></script>
+
+    <!-- Initialize animation on login screen first -->
+    <script>
+        function initFinisherHeader() {
+            if (typeof FinisherHeader === 'undefined') {
+                console.warn('FinisherHeader library not loaded. Is finisher-header.es5.min.js in the same folder?');
+                return;
+            }
+            // Remove any old canvas so we can re-init cleanly
+            document.querySelectorAll('.finisher-header canvas').forEach(c => c.remove());
+            new FinisherHeader({
+                "count": 100,
+                "size": {
+                    "min": 1,
+                    "max": 96,
+                    "pulse": 0.5
+                },
+                "speed": {
+                    "x": { "min": 0, "max": 0.9 },
+                    "y": { "min": 0, "max": 0.9 }
+                },
+                "colors": {
+                    "background": "#2c0253",
+                    "particles": ["#faff1b"]
+                },
+                "blending": "lighten",
+                "opacity": {
+                    "center": 0.15,
+                    "edge": 0.25
+                },
+                "skew": -2,
+                "shapes": ["c"]
+            });
+        }
+
+        // Start animation on login background (first visible .finisher-header)
+        initFinisherHeader();
+    </script>
+
+    <!-- App Logic -->
+    <script>
+        const API_BASE = "http://127.0.0.1:8000";
+
+        // ========== AUTH ==========
+        async function doLogin() {
+            const user = document.getElementById("loginUser").value.trim();
+            const pass = document.getElementById("loginPass").value.trim();
+            const errorBox = document.getElementById("loginError");
+
+            try {
+                const res = await fetch(`${API_BASE}/login`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ username: user, password: pass })
+                });
+
+                if (res.ok) {
+                    const data = await res.json();
+                    localStorage.setItem("auth_token", data.token);
+                    showMainApp();
+                } else {
+                    const err = await res.json();
+                    errorBox.textContent = err.detail || "Invalid username or password.";
+                    errorBox.style.display = "block";
+                }
+            } catch (e) {
+                // Backend offline — fallback to demo mode
+                if (user === "admin" && pass === "1234") {
+                    showMainApp();
+                } else {
+                    errorBox.textContent = "Cannot connect to server. Demo mode: use admin / 1234";
+                    errorBox.style.display = "block";
+                }
+            }
+        }
+
+        function doLogout() {
+            localStorage.removeItem("auth_token");
+            location.reload();
+        }
+
+        function showMainApp() {
+            document.getElementById("loginPage").style.display = "none";
+            document.getElementById("mainApp").style.display = "block";
+
+            // Move finisher-header class from login to main app header
+            document.querySelector('.login-bg').classList.remove('finisher-header');
+            document.getElementById('mainHeader').classList.add('finisher-header');
+
+            // Re-initialize animation on the now-visible main header
+            initFinisherHeader();
+        }
+
+        // Auto-login if token exists (optional)
+        window.addEventListener('DOMContentLoaded', () => {
+            if (localStorage.getItem("auth_token")) {
+                // Optionally verify token here with backend
+                showMainApp();
+            }
+        });
+
+        document.getElementById("loginPass").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") doLogin();
+        });
+
+        // ========== CHAT & CART LOGIC ==========
+        let shoppingCart = [];
+
+        function escapeHtml(value) {
+            return String(value ?? "")
+                .replaceAll("&", "&amp;")
+                .replaceAll("<", "&lt;")
+                .replaceAll(">", "&gt;")
+                .replaceAll('"', "&quot;")
+                .replaceAll("'", "&#039;");
+        }
+
+        function jsString(value) {
+            const slash = String.fromCharCode(92);
+            return String(value ?? "")
+                .replaceAll(slash, slash + slash)
+                .replaceAll("'", slash + "'");
+        }
+
+        function showTyping() {
+            const chat = document.getElementById("chat");
+            const id = "typing-" + Date.now();
+            chat.innerHTML += `
+                <div id="${id}" class="typing-indicator">
+                    <span></span><span></span><span></span>
+                </div>
+            `;
+            chat.scrollTop = chat.scrollHeight;
+            return id;
+        }
+
+        function startVoice() {
+            const micBtn = document.getElementById("micBtn");
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            const recognition = new SpeechRecognition();
+            recognition.lang = document.getElementById("voiceLang").value;
+            recognition.continuous = false;
+            recognition.interimResults = false;
+
+            recognition.onstart = function () {
+                micBtn.classList.remove("finished");
+                micBtn.classList.add("listening");
+                micBtn.innerHTML = "🔴";
+            };
+
+            recognition.onresult = function (event) {
+                const text = event.results[0][0].transcript;
+                document.getElementById("message").value = text;
+                micBtn.classList.remove("listening");
+                micBtn.classList.add("finished");
+                micBtn.innerHTML = "🟢";
+                sendMessage();
+            };
+
+            recognition.onend = function () {
+                micBtn.classList.remove("listening");
+                setTimeout(() => {
+                    micBtn.classList.remove("finished");
+                    micBtn.innerHTML = "🎤";
+                }, 1000);
+            };
+
+            recognition.onerror = function () {
+                micBtn.classList.remove("listening");
+                micBtn.innerHTML = "🎤";
+            };
+
+            recognition.start();
+        }
+
+        function removeTyping(id) {
+            const el = document.getElementById(id);
+            if (el) el.remove();
+        }
+
+        async function sendMessage() {
+            const input = document.getElementById("message");
+            const msg = input.value.trim();
+            if (!msg) return;
+
+            const chat = document.getElementById("chat");
+            chat.innerHTML += `
+                <div class="user">
+                    <b>You:</b> ${escapeHtml(msg)}
+                </div>
+            `;
+            input.value = "";
+            const typingId = showTyping();
+
+            try {
+                const response = await fetch(`${API_BASE}/chat`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ message: msg })
+                });
+
+                const data = await response.json();
+                removeTyping(typingId);
+
+                if (data.type === "products") {
+                    for (const product of data.products) {
+                        chat.innerHTML += `
+                            <div class="product-card">
+                                <h3>${escapeHtml(product.name)}</h3>
+                                <p><b>Product ID:</b> ${escapeHtml(product.id)}</p>
+                                <p><b>Price:</b> LKR ${escapeHtml(product.price)}</p>
+                                <a href="${escapeHtml(product.url)}" target="_blank">View Product</a>
+                                <button onclick="addToCart('${jsString(product.id)}','${jsString(product.name)}','${jsString(product.price)}')">
+                                    Add To Cart
+                                </button>
+                            </div>
+                        `;
+                    }
+                } else if (data.type === "order_created") {
+                    chat.innerHTML += `
+                        <div class="order-card">
+                            <h3>Order Created Successfully</h3>
+                            <p><b>Order Number:</b> ${escapeHtml(data.order_number || "Pending")}</p>
+                            ${data.checkout_url ? `<a href="${escapeHtml(data.checkout_url)}" target="_blank">Proceed to Payment</a>` : ""}
+                        </div>
+                    `;
+                } else if (data.type === "saved_orders") {
+                    chat.innerHTML += `
+                        <div class="bot">
+                            <b>AI:</b> ${escapeHtml(data.result).replaceAll("\n", "<br>")}
+                        </div>
+                    `;
+                    for (const order of data.orders || []) {
+                        const productIds = (order.product_ids || []).join(", ");
+                        const orderNumber = order.order_number || "Not saved yet";
+                        const trackToken = order.track_token || productIds;
+                        const disabled = trackToken ? "" : "disabled";
+                        const buttonText = order.order_number ? "Track Order" : "Select Product";
+
+                        chat.innerHTML += `
+                            <div class="order-card">
+                                <h3>Saved Order ${escapeHtml(order.index)}</h3>
+                                <p><b>Product ID:</b> ${escapeHtml(productIds || "Unknown")}</p>
+                                <p><b>Order:</b> ${escapeHtml(orderNumber)}</p>
+                                <p><b>Recipient:</b> ${escapeHtml(order.recipient_name || "Not saved")}</p>
+                                <p><b>City:</b> ${escapeHtml(order.delivery_city || "Not saved")}</p>
+                                <p class="muted">Saved: ${escapeHtml(order.created_at || "Unknown")}</p>
+                                ${order.checkout_url ? `<a href="${escapeHtml(order.checkout_url)}" target="_blank">Checkout Link</a>` : ""}
+                                <button ${disabled} onclick="trackSavedOrder('${jsString(trackToken)}')">${buttonText}</button>
+                            </div>
+                        `;
+                    }
+                } else {
+                    chat.innerHTML += `
+                        <div class="bot">
+                            <b>AI:</b> ${escapeHtml(data.result).replaceAll("\n", "<br>")}
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                removeTyping(typingId);
+                chat.innerHTML += `
+                    <div class="bot">
+                        <b>Error:</b> Cannot connect to FastAPI server.
+                    </div>
+                `;
+                console.error(error);
+            }
+            chat.scrollTop = chat.scrollHeight;
+        }
+
+        async function trackSavedOrder(token) {
+            const chat = document.getElementById("chat");
+            if (!token) return;
+
+            chat.innerHTML += `
+                <div class="user">
+                    <b>You:</b> ${escapeHtml(token)}
+                </div>
+            `;
+            const typingId = showTyping();
+
+            try {
+                const response = await fetch(`${API_BASE}/chat`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ message: token })
+                });
+
+                const data = await response.json();
+                removeTyping(typingId);
+
+                chat.innerHTML += `
+                    <div class="bot">
+                        <b>AI:</b> ${escapeHtml(data.result).replaceAll("\n", "<br>")}
+                    </div>
+                `;
+            } catch (error) {
+                removeTyping(typingId);
+                chat.innerHTML += `
+                    <div class="bot">
+                        <b>Error:</b> Cannot connect to FastAPI server.
+                    </div>
+                `;
+                console.error(error);
+            }
+            chat.scrollTop = chat.scrollHeight;
+        }
+
+        function addToCart(id, name, price) {
+            const existing = shoppingCart.find(item => item.id === id);
+            if (existing) {
+                existing.quantity++;
+            } else {
+                shoppingCart.push({ id: id, name: name, price: price, quantity: 1 });
+            }
+            renderCart();
+        }
+
+        function removeItem(index) {
+            shoppingCart.splice(index, 1);
+            renderCart();
+        }
+
+        function renderCart() {
+            const cart = document.getElementById("cartItems");
+            if (shoppingCart.length === 0) {
+                cart.innerHTML = "Cart is empty.";
+                return;
+            }
+            let html = "";
+            shoppingCart.forEach((item, index) => {
+                html += `
+                    <div class="cart-item">
+                        <b>${escapeHtml(item.name)}</b>
+                        <p>Qty: ${item.quantity}</p>
+                        <p>LKR ${item.price}</p>
+                        <button onclick="removeItem(${index})">Remove</button>
+                    </div>
+                `;
+            });
+            cart.innerHTML = html;
+        }
+
+        async function checkoutCart() {
+            if (shoppingCart.length === 0) {
+                alert("Cart is empty.");
+                return;
+            }
+
+            const recipientName = prompt("Recipient name");
+            const recipientPhone = prompt("Recipient phone");
+            const deliveryAddress = prompt("Delivery address");
+            const deliveryCity = prompt("Delivery city");
+            const today = new Date();
+            const deliveryDate = prompt("Delivery date YYYY-MM-DD", today.toISOString().split("T")[0]);
+            const senderName = prompt("Sender name");
+
+            const order = {
+                cart: shoppingCart.map(item => ({
+                    product_id: item.id,
+                    quantity: item.quantity
+                })),
+                recipient: {
+                    name: recipientName,
+                    phone: recipientPhone
+                },
+                delivery: {
+                    address: deliveryAddress,
+                    city: deliveryCity,
+                    date: deliveryDate
+                },
+                sender: {
+                    name: senderName,
+                    anonymous: false
+                },
+                currency: "LKR"
+            };
+
+            const response = await fetch(`${API_BASE}/chat`, {
+                method: "POST",
+                headers: { "Content-Type":"application/json" },
+                body: JSON.stringify({
+                    message: "Checkout cart",
+                    order: order
+                })
+            });
+
+            const data = await response.json();
+            const chat = document.getElementById("chat");
+
+            chat.innerHTML += `
+                <div class="bot">
+                    ${escapeHtml(data.result)}
+                </div>
+            `;
+
+            if (data.checkout_url) {
+                chat.innerHTML += `
+                    <div class="order-card">
+                        <h3>Payment</h3>
+                        <a href="${data.checkout_url}" target="_blank">Proceed to Payment</a>
+                    </div>
+                `;
+                shoppingCart = [];
+                renderCart();
+            }
+        }
+
+        async function buyProduct(productId) {
+            const chat = document.getElementById("chat");
+            const quantityText = prompt("Quantity", "1");
+            if (quantityText === null) return;
+
+            const quantity = parseInt(quantityText, 10);
+            if (!Number.isInteger(quantity) || quantity < 1 || quantity > 99) {
+                chat.innerHTML += `
+                    <div class="bot">
+                        <b>AI:</b> Quantity must be between 1 and 99.
+                    </div>
+                `;
+                return;
+            }
+
+            const recipientName = prompt("Recipient name");
+            const recipientPhone = prompt("Recipient phone");
+            const deliveryAddress = prompt("Delivery address");
+            const deliveryCity = prompt("Delivery city");
+            const now = new Date();
+            const today = [
+                now.getFullYear(),
+                String(now.getMonth() + 1).padStart(2, "0"),
+                String(now.getDate()).padStart(2, "0")
+            ].join("-");
+            const deliveryDate = prompt("Delivery date (YYYY-MM-DD)", today);
+            const senderName = prompt("Sender name");
+            const giftMessage = prompt("Gift message (optional)", "");
+
+            if (!recipientName || !recipientPhone || !deliveryAddress || !deliveryCity || !deliveryDate || !senderName) {
+                chat.innerHTML += `
+                    <div class="bot">
+                        <b>AI:</b> Order cancelled. Recipient, delivery, and sender details are required.
+                    </div>
+                `;
+                return;
+            }
+
+            const order = {
+                cart: [{ product_id: productId, quantity: quantity }],
+                recipient: {
+                    name: recipientName.trim(),
+                    phone: recipientPhone.trim()
+                },
+                delivery: {
+                    address: deliveryAddress.trim(),
+                    city: deliveryCity.trim(),
+                    date: deliveryDate.trim(),
+                    location_type: "house"
+                },
+                sender: {
+                    name: senderName.trim(),
+                    anonymous: false
+                },
+                gift_message: giftMessage ? giftMessage.trim() : null,
+                currency: "LKR",
+                response_format: "markdown"
+            };
+
+            chat.innerHTML += `
+                <div class="user">
+                    <b>You:</b> Buy product ${productId}
+                </div>
+            `;
+            const typingId = showTyping();
+
+            try {
+                const response = await fetch(`${API_BASE}/chat`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        message: "Create order for product " + productId,
+                        order: order
+                    })
+                });
+
+                const data = await response.json();
+                removeTyping(typingId);
+
+                chat.innerHTML += `
+                    <div class="bot">
+                        <b>AI:</b> ${escapeHtml(data.result).replaceAll("\n", "<br>")}
+                    </div>
+                `;
+
+                if (data.checkout_url) {
+                    chat.innerHTML += `
+                        <div class="order-card">
+                            <h3>Order Created Successfully</h3>
+                            <p><b>Order Number:</b> ${escapeHtml(data.order_number || "")}</p>
+                            <a href="${escapeHtml(data.checkout_url)}" target="_blank" style="background:#16a34a; color:white; padding:10px 20px; border-radius:8px; text-decoration:none; display:inline-block; margin-top:10px;">
+                                💳 Proceed to Payment
+                            </a>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                removeTyping(typingId);
+                chat.innerHTML += `
+                    <div class="bot">
+                        <b>Error:</b> Cannot connect to FastAPI server.
+                    </div>
+                `;
+                console.error(error);
+            }
+            chat.scrollTop = chat.scrollHeight;
+        }
+    </script>
+</body>
+</html>
