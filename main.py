@@ -4,6 +4,7 @@ from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 from mcp.client.streamable_http import streamablehttp_client
 from mcp import ClientSession
+from fastapi.staticfiles import StaticFiles
 from langchain_google_genai import ChatGoogleGenerativeAI
 import json
 import re
@@ -14,7 +15,7 @@ from datetime import datetime
 from dotenv import load_dotenv
 load_dotenv()
 app = FastAPI(title="Kapruka AI Assistant")
-
+app.mount("/static", StaticFiles(directory="."), name="static")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
