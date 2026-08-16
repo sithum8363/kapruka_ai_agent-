@@ -695,3 +695,165 @@ Showing 19 results (LKR)
 
 *More results available. Pass `cursor="eyJ1IjoiTWpBPSIsInAiOjJ9"` for the next page.*
 ==================================================
+User: hi
+User: i am looking of eat some thing
+User: pizza
+User: pizza
+Tool: kapruka_search_products
+Result: ## Kapruka search: "pizza"
+Showing 17 results (LKR)
+
+**1. Hot and Spicy Chicken Pan Pizza - Pizza Hut - Pan Pizza**
+   ID: `PIZZAHUT00181` · LKR 1,510 · In stock (low) · ships internationally
+   [View product](https://www.kapruka.com/buyonline/hot-and-spicy-chicken-pan-pizz/kid/pizzahut00181)
+
+**2. Chilli Chicken Pizza Hut Delight Pan Pizza Sri Lanka - Pan Pizza**
+   ID: `PIZZAHUT00213` · LKR 1,120 · In stock (low) · ships internationally
+   [View product](https://www.kapruka.com/buyonline/chilli-chicken-pizza-hut-delig/kid/pizzahut00213)
+
+**3. Sokany Pizza Marker Sk 08034**
+   ID: `EF_PC_ELEC0V1905POD00244P` · LKR 18,490 · In stock (low) · ships internationally
+   [View product](https://www.kapruka.com/buyonline/sokany-pizza-marker-sk-08034/kid/ef_pc_elec0v1905pod00244p)
+
+**4. Luxury Acacia Cutting n Pizza Serving Boards**
+   ID: `EF_PC_HOME0V3146P00001` · LKR 3,880 · In stock (low) · ships internationally
+   [View product](https://www.kapruka.com/buyonline/luxury-acacia-cutting-n-pizza-/kid/ef_pc_home0v3146p00001)
+
+**5. Veggie Masala Pizza - Pizza Hut Pan Pizza Sri Lanka - Pan Pizza**
+   ID: `PIZZAHUT00264` · LKR 1,120 · In stock (low) · ships internationally
+   [View product](https://www.kapruka.com/buyonline/veggie-masala-pizza-pizza-hut-/kid/pizzahut00264)
+
+**6. BLACK+DECKER 55L Toaster Oven, Rotisserie, Fits 14` Pizza**
+   ID: `EF_PC_ELEC0V3851POD00045P` · LKR 80,900 · In stock (low) · ships internationally
+   [View product](https://www.kapruka.com/buyonline/black-decker-55l-toaster-oven-/kid/ef_pc_elec0v3851pod00045p)
+
+**7. BLACK+DECKER 45L Toaster Oven, Rotisserie n Pizza Baking**
+   ID: `EF_PC_ELEC0V3851POD00044P` · LKR 66,900 · In stock (low) · ships internationally
+   [View product](https://www.kapruka.com/buyonline/black-decker-45l-toaster-oven-/kid/ef_pc_elec0v3851pod00044p)
+
+**8. Double Chicken and Cheese Fiesta Pizza Hut Sri Lanka - Pan Pizza**
+   ID: `PIZZAHUT00104` · LKR 1,700 · In stock (low) · ships internationally
+   [View product](https://www.kapruka.com/buyonline/double-chicken-and-cheese-fies/kid/pizzahut00104)
+
+**9. Pizza Hut Seafood Pan Pizza Price - Sri Lanka - Pan Pizza**
+   ID: `PIZZAHUT00218` · LKR 1,850 · In stock (low) · ships internationally
+   [View product](https://www.kapruka.com/buyonline/pizza-hut-seafood-pan-pizza-pr/kid/pizzahut00218)
+
+**10. Tandoori Chicken Pizza Hut Sri Lanka - Classic Pan - Pan Pizza**
+   ID: `PIZZAHUT00207` · LKR 1,510 · In stock (low) · ships internationally
+   [View product](https://www.kapruka.com/buyonline/tandoori-chicken-pizza-hut-sri/kid/pizzahut00207)
+
+**11. Cheese Lovers Pizza Hut Classic Pan Pizza Sri Lanka - Pan Pizza**
+   ID: `PIZZAHUT0095` · LKR 1,510 · In stock (low) · ships internationally
+   [View product](https://www.kapruka.com/buyonline/cheese-lovers-pizza-hut-classi/kid/pizzahut0095)
+
+**12. Margherita Pan Pizza | Pizza Hut Delight Sri Lanka - Pan Pizza**
+   ID: `PIZZAHUT00283` · LKR 1,120 · In stock (low) · ships internationally
+   [View product](https://www.kapruka.com/buyonline/margherita-pan-pizza-pizza-hut/kid/pizzahut00283)
+
+**13. Pizza Oven Price in Sri Lanka - Electric Pizza Maker**
+   ID: `EF_PC_ELEC0V2315POD00007` · LKR 23,500 · In stock (low) · ships internationally
+   [View product](https://www.kapruka.com/buyonline/pizza-oven-price-in-sri-lanka-/kid/ef_pc_elec0v2315pod00007)
+
+**14. Butter Chicken Masala Pizza Hut Pan Pizza Sri Lanka - Pan Pizza**
+   ID: `PIZZAHUT0093` · LKR 1,510 · In stock (low) · ships internationally
+   [View product](https://www.kapruka.com/buyonline/butter-chicken-masala-pizza-hu/kid/pizzahut0093)
+
+**15. Pizza Cutter**
+   ID: `EF_PC_HOME0V2686POD00076` · LKR 750 · In stock (low) · ships internationally
+   [View product](https://www.kapruka.com/buyonline/pizza-cutter/kid/ef_pc_home0v2686pod00076)
+
+**16. Veg Supreme Pizza - Pizza Hut Veggie Pan Pizza - Pan Pizza**
+   ID: `PIZZAHUT00116` · LKR 1,510 · In stock (low) · ships internationally
+   [View product](https://www.kapruka.com/buyonline/veg-supreme-pizza-pizza-hut-ve/kid/pizzahut00116)
+
+**17. Geepas Pizza Maker Gpm2035n**
+   ID: `EF_PC_ELEC0V1905POD00323` · LKR 22,900 · In stock (low) · ships internationally
+   [View product](https://www.kapruka.com/buyonline/geepas-pizza-maker-gpm2035n/kid/ef_pc_elec0v1905pod00323)
+
+*More results available. Pass `cursor="eyJ1IjoiTWpBPSIsInAiOjJ9"` for the next page.*
+==================================================
+User: can i look dog  food
+User: can i look dog  food
+Tool: kapruka_search_products
+Result: ## Kapruka search: "dog food"
+Showing 19 results (LKR)
+
+**1. Me-O Adult Cat Wet Food Tuna In Jelly Pouch 80g Me O Cat Feed We**
+   ID: `EF_PC_PETC0V1831P00096` · LKR 390 · In stock (low) · ships internationally
+   [View product](https://www.kapruka.com/buyonline/me-o-adult-cat-wet-food-tuna-i/kid/ef_pc_petc0v1831p00096)
+
+**2. Odor Remover 500ml Good Bye To Pet Food Smell Getsun CAR CARE G9**
+   ID: `EF_PC_AUTO0V2148POD00099` · LKR 2,020 · In stock (low) · ships internationally
+   [View product](https://www.kapruka.com/buyonline/odor-remover-500ml-good-bye-to/kid/ef_pc_auto0v2148pod00099)
+
+**3. Labrador Puppy Price in Sri Lanka - Purebred Retriever**
+   ID: `PETCARE00136` · LKR 70,000 · In stock (low) · ships internationally
+   [View product](https://www.kapruka.com/buyonline/labrador-puppy-price-in-sri-la/kid/petcare00136)
+
+**4. Pet Slow Food Mat Silicone Pet Food Tray Water Bowl Lick Pad Lic**
+   ID: `EF_PC_PETC0V671P00134` · LKR 2,490 · In stock (low) · ships internationally
+   [View product](https://www.kapruka.com/buyonline/pet-slow-food-mat-silicone-pet/kid/ef_pc_petc0v671p00134)
+
+**5. Pet Bowl Stainless Steel Pets Food Water Feeding Colourful Food**
+   ID: `EF_PC_PETC0V671P00051` · LKR 2,000 · In stock (low) · ships internationally
+   [View product](https://www.kapruka.com/buyonline/pet-bowl-stainless-steel-pets-/kid/ef_pc_petc0v671p00051)
+
+**6. Pet Bowl Stainless Steel Pets Food Water Feeding Colourful Food**
+   ID: `EF_PC_PETC0V671P00048` · LKR 2,000 · In stock (low) · ships internationally
+   [View product](https://www.kapruka.com/buyonline/pet-bowl-stainless-steel-pets-/kid/ef_pc_petc0v671p00048)
+
+**7. Shih Tzu Price in Sri Lanka - Puppies for Sale**
+   ID: `PETCARE00137` · LKR 90,000 · In stock (low) · ships internationally
+   [View product](https://www.kapruka.com/buyonline/shih-tzu-price-in-sri-lanka-pu/kid/petcare00137)
+
+**8. Automatic Plastic Dispenser Pet Auto Food Feeder Storage Bowl Pl**
+   ID: `EF_PC_PETC0V671P00019` · LKR 9,000 · In stock (low) · ships internationally
+   [View product](https://www.kapruka.com/buyonline/automatic-plastic-dispenser-pe/kid/ef_pc_petc0v671p00019)
+
+**9. Automatic Plastic Dispenser Pet Auto Food Feeder Storage Bowl Pl**
+   ID: `EF_PC_PETC0V671P00020` · LKR 9,000 · In stock (low) · ships internationally
+   [View product](https://www.kapruka.com/buyonline/automatic-plastic-dispenser-pe/kid/ef_pc_petc0v671p00020)
+
+**10. Pet Bowl Stainless Steel Pets Food Water Feeding Silver Colour F**
+   ID: `EF_PC_PETC0V671P00049` · LKR 2,700 · In stock (low) · ships internationally
+   [View product](https://www.kapruka.com/buyonline/pet-bowl-stainless-steel-pets-/kid/ef_pc_petc0v671p00049)
+
+**11. Pet Bowl Stainless Steel Pets Food Water Feeding Silver Colour F**
+   ID: `EF_PC_PETC0V671P00050` · LKR 1,600 · In stock (low) · ships internationally
+   [View product](https://www.kapruka.com/buyonline/pet-bowl-stainless-steel-pets-/kid/ef_pc_petc0v671p00050)
+
+**12. Interactive Cat Toy Food Treat Puzzle Ball Slow Feeder Funny Slo**
+   ID: `EF_PC_PETC0V671P00016` · LKR 2,300 · In stock (low) · ships internationally
+   [View product](https://www.kapruka.com/buyonline/interactive-cat-toy-food-treat/kid/ef_pc_petc0v671p00016)
+
+**13. Interactive Dog Toy Food Treat Puzzle Ball Slow Feeder Funny Slo**
+   ID: `EF_PC_PETC0V671P00015` · LKR 2,300 · In stock (low) · ships internationally
+   [View product](https://www.kapruka.com/buyonline/interactive-dog-toy-food-treat/kid/ef_pc_petc0v671p00015)
+
+**14. Glow Tetra Fish Price in Sri Lanka - GloFish Tetra**
+   ID: `PETCARE00151` · LKR 2,250 · In stock (low) · ships internationally
+   [View product](https://www.kapruka.com/buyonline/glow-tetra-fish-price-in-sri-l/kid/petcare00151)
+
+**15. Small Double Bowls Cute Multi-Purpose Candy Colour Puppy Dog Cat**
+   ID: `EF_PC_PETC0V671P00018` · LKR 2,000 · In stock (low) · ships internationally
+   [View product](https://www.kapruka.com/buyonline/small-double-bowls-cute-multi-/kid/ef_pc_petc0v671p00018)
+
+**16. Cute Cat Plush Toy 8 Inch - Soft Cat Toy for Kids Sri Lanka**
+   ID: `SOFTTOY001223` · LKR 1,800 · In stock (low) · ships internationally
+   [View product](https://www.kapruka.com/buyonline/cute-cat-plush-toy-8-inch-soft/kid/softtoy001223)
+
+**17. Small Double Bowls Cute Multi-Purpose Candy Colour Puppy Dog Cat**
+   ID: `EF_PC_PETC0V671P00017` · LKR 2,000 · In stock (low) · ships internationally
+   [View product](https://www.kapruka.com/buyonline/small-double-bowls-cute-multi-/kid/ef_pc_petc0v671p00017)
+
+**18. Stresstabs Tablets For Dogs And Cats 60 Tablets**
+   ID: `EF_PC_PETC0V3898P00003` · LKR 710 · In stock (low) · ships internationally
+   [View product](https://www.kapruka.com/buyonline/stresstabs-tablets-for-dogs-an/kid/ef_pc_petc0v3898p00003)
+
+**19. Garfield Soft Toy - 10 Inch Plush Cat | Kapruka Sri Lanka**
+   ID: `SOFTTOY001245` · LKR 2,000 · In stock (low) · ships internationally
+   [View product](https://www.kapruka.com/buyonline/garfield-soft-toy-10-inch-plus/kid/softtoy001245)
+
+*More results available. Pass `cursor="eyJ1IjoiTWpBPSIsInAiOjJ9"` for the next page.*
+==================================================
